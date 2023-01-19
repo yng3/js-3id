@@ -1,10 +1,10 @@
-import type { Manager } from '@3id/manager'
+import type { Manager } from '@3id/did-manager'
 import { DIDDataStore } from '@glazed/did-datastore'
 import type { BasicProfile, ImageMetadata, ImageSources }  from '@datamodels/identity-profile-basic'
-import { AccountID } from 'caip'
+import { AccountId } from 'caip'
 import { IPFS_PREFIX, IPFS_URL } from '../constants'
 import type { DIDsData } from '../types'
-import { ceramic } from './ceramic'
+import { normalizeAccountId } from '@ceramicnetwork/common'
 
 export type Dimensions = { height: number; width: number }
 export type SizeMode = 'contain' | 'cover'
@@ -95,7 +95,7 @@ export async function getDIDsData(manager: Manager): Promise<DIDsData> {
       const accounts = accountsObj ? Object.keys(accountsObj) : []
       return {
         did,
-        accounts: accounts.map((account) => new AccountID(account)),
+        accounts: accounts.map((account) => normalizeAccountId(account)),
         profile: await loadProfile(did, dataStore),
       }
     })

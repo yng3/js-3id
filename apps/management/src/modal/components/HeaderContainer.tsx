@@ -18,7 +18,8 @@ const headerData = (req: RequestState) => {
   }
 
   let headerStr
-  if (req.type === 'prompt_authenticate') {
+  // @ts-ignore
+  if (req.type === 'prompt_authenticate' && req.params?.did) {
     // @ts-ignore
     headerStr = didShorten(req.params.did)
   } else if (req.type === 'prompt_migration') {
@@ -95,7 +96,7 @@ export default function HeaderContainer() {
           onClick={() => {
             reqState?.respond.resolve({error: 'cancellation'})
         }}>
-          <img src={close} />
+          <img src={close.src} />
         </div>
       </div>
       {imageHeaders}

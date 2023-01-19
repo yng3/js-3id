@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.build.json",
+  "include": [
+    "./packages/connect/src",
+    "./packages/did-manager/src",
+    "./packages/did-provider/src"
+  ],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "lib": ["DOM", "ES2020"],
+    "skipLibCheck": true
+  },
+  "typedocOptions": {
+    "name": "3ID API",
+    "readme": "none",
+    "entryDocument": "overview.md",
+    "entryPoints": [
+      "./packages/connect/src/index.ts",
+      "./packages/did-manager/src/index.ts",
+      "./packages/did-provider/src/index.ts"
+    ],
+    "disableSources": true,
+    "excludeExternals": true,
+    "excludeInternal": true,
+    "excludePrivate": true,
+    "githubPages": false,
+    "hideBreadcrumbs": true,
+    "hideInPageTOC": true
+  }
+}

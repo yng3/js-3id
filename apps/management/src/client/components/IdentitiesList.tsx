@@ -1,4 +1,4 @@
-import type { Manager } from '@3id/manager'
+import type { Manager } from '@3id/did-manager'
 import { Avatar, Box, Text } from 'grommet'
 import { useMemo } from 'react'
 
@@ -24,7 +24,7 @@ function IdentityItem({ data, did, manager }: ItemProps) {
   const avatarSrc = useMemo(() => {
     return profile?.image
       ? getImageSrc(profile.image, { height: 65, width: 65 })
-      : avatarPlaceholder
+      : avatarPlaceholder.src
   }, [profile])
 
   let hasConnectedAccount = false
